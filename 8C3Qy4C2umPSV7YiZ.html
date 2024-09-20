@@ -1,0 +1,237 @@
+<html><head><base href="https://spotify-clone.example.com/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Spotify Clone</title><style>
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #181818;
+  --bg-highlight: #282828;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent: #1db954;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+#sidebar {
+  width: 230px;
+  background-color: var(--bg-secondary);
+  padding: 24px 16px;
+}
+
+#logo {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+}
+
+#main-content {
+  flex-grow: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.playlist-item {
+  background-color: var(--bg-highlight);
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.playlist-item:hover {
+  background-color: #333333;
+}
+
+.playlist-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.playlist-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.playlist-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+#player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background-color: var(--bg-highlight);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+}
+
+.player-control-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 24px;
+  margin: 0 16px;
+  cursor: pointer;
+}
+
+.player-progress {
+  flex-grow: 1;
+  height: 4px;
+  background-color: var(--bg-secondary);
+  margin: 0 16px;
+}
+
+.progress-bar {
+  width: 30%;
+  height: 100%;
+  background-color: var(--accent);
+}
+</style></head><body>
+  <div id="sidebar">
+    <div id="logo">Spotify</div>
+    <a href="#" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
+      </svg>
+      Início
+    </a>
+    <a href="#" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+      Buscar
+    </a>
+    <a href="#" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 5h-3v5.5c0 1.38-1.12 2.5-2.5 2.5S10 13.88 10 12.5s1.12-2.5 2.5-2.5c.57 0 1.08.19 1.5.51V5h4v2zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/>
+      </svg>
+      Sua Biblioteca
+    </a>
+  </div>
+  
+  <div id="main-content">
+    <h2 class="section-title">Playlists em destaque</h2>
+    <div class="playlist-grid">
+      <div class="playlist-item">
+        <img alt="Capa do álbum This Is BTS, mostrando os membros do grupo BTS, estilo pop coreano" src="https://example.com/bts-cover.jpg" width="160" height="160" class="playlist-image">
+        <div class="playlist-title">This Is BTS</div>
+        <div class="playlist-description">Todos os maiores hits do BTS</div>
+      </div>
+      <div class="playlist-item">
+        <img alt="Capa da playlist Top Hits Brasil, mostrando um microfone dourado em fundo verde" src="https://example.com/top-hits-brasil.jpg" width="160" height="160" class="playlist-image">
+        <div class="playlist-title">Top Hits Brasil</div>
+        <div class="playlist-description">O melhor do pop brasileiro</div>
+      </div>
+      <div class="playlist-item">
+        <img alt="Capa da playlist Rock Classics, mostrando uma guitarra elétrica vermelha" src="https://example.com/rock-classics.jpg" width="160" height="160" class="playlist-image">
+        <div class="playlist-title">Rock Classics</div>
+        <div class="playlist-description">Os maiores clássicos do rock</div>
+      </div>
+      <div class="playlist-item">
+        <img alt="Capa da playlist Mood Booster, mostrando um emoji sorridente amarelo" src="https://example.com/mood-booster.jpg" width="160" height="160" class="playlist-image">
+        <div class="playlist-title">Mood Booster</div>
+        <div class="playlist-description">Músicas para levantar seu astral</div>
+      </div>
+    </div>
+    
+    <h2 class="section-title">Feito para você</h2>
+    <div class="playlist-grid">
+      <div class="playlist-item">
+        <img alt="Capa da playlist Daily Mix 1, mostrando uma colagem de artistas pop" src="https://example.com/daily-mix-1.jpg" width="160" height="160" class="playlist-image">
+        <div class="playlist-title">Daily Mix 1</div>
+        <div class="playlist-description">Taylor Swift, Ed Sheeran, Ariana Grande e mais</div>
+      </div>
+      <div class="playlist-item">
+        <img alt="Capa da playlist Discover Weekly, mostrando um mosaico colorido" src="https://example.com/discover-weekly.jpg" width="160" height="160" class="playlist-image">
+        <div class="playlist-title">Discover Weekly</div>
+        <div class="playlist-description">Sua mixtape semanal de novas descobertas</div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="player">
+    <div class="player-controls">
+      <button class="player-control-btn">&#9198;</button>
+      <button class="player-control-btn">&#9205;</button>
+      <button class="player-control-btn">&#9197;</button>
+    </div>
+    <div class="player-progress">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const playlistItems = document.querySelectorAll('.playlist-item');
+  const playButton = document.querySelector('.player-control-btn:nth-child(2)');
+  let isPlaying = false;
+
+  playlistItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const title = item.querySelector('.playlist-title').textContent;
+      alert(`Reproduzindo: ${title}`);
+      isPlaying = true;
+      playButton.innerHTML = '&#10074;&#10074;'; // Pause icon
+    });
+  });
+
+  playButton.addEventListener('click', () => {
+    isPlaying = !isPlaying;
+    playButton.innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9205;';
+  });
+});
+</script>
+</body></html>
